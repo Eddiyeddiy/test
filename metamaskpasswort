@@ -1,1 +1,4 @@
 passwort metamaskseed zum testen 'nephew digital spare very salute bag virtual trophy rifle element gift wood'
+
+npm install --save web3@1.0.0-beta.35 solc fs-extra
+npm install --save next@4.1.4 react-dom react next-routes
