@@ -3,6 +3,7 @@ import factory from '../ethereum/factory';
 import { Table, Button, Card, Message, List } from 'semantic-ui-react';
 import Layout from '../components/Layout';
 import { Link } from '../routes';
+import web3 from '../ethereum/web3'
 
 class CustomerIndex extends Component {
   static async getInitialProps() {
