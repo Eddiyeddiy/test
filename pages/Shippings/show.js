@@ -5,6 +5,7 @@ import Shipment from '../../ethereum/shipment'
 import factory from '../../ethereum/factory';
 import { Link } from '../../routes';
 import RequestRow from '../../components/RequestRow'
+import web3 from '../../ethereum/web3';
 
 
 class ShippingsShow extends Component {
@@ -12,16 +13,14 @@ class ShippingsShow extends Component {
   static async getInitialProps(props) {
     const tracking = await factory.methods.getCustomers().call();
     const amountofcustomers = await factory.methods.amountofcustomers().call();
-    const amountofshimpents = await Promise.all(
-      Array(parseInt(amountofcustomers)).fill().map((element, index) => {
-        return factory.methods.getAmountofShipments(tracking[index]).call()
-      })
-    );
+    const amountofshimpents = await factory.methods.getAmountofShipments(props.query.address).call()
+
     const shippaddress = await Promise.all(
         Array(parseInt(amountofshimpents)).fill().map((element, index) => {
         return factory.methods.getDeployedShipments(props.query.address, index).call()
       })
     );
+
     return { address: props.query.address, shippaddress };
   }
 
@@ -61,3 +60,4 @@ class ShippingsShow extends Component {
 }
 
 export default ShippingsShow;
+
